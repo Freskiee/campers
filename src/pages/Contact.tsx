@@ -22,17 +22,18 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle form submission
-    console.log('Form submitted:', formData);
-    alert('Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.');
-    setFormData({
-      name: '',
-      company: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
+    // Construir mensaje para WhatsApp con los datos del formulario
+    const { name, company, email, phone, service, message } = formData;
+    const text =
+      `Nuevo contacto desde la web:%0A` +
+      `Nombre: ${name}%0A` +
+      `Empresa: ${company}%0A` +
+      `Email: ${email}%0A` +
+      `Teléfono: ${phone}%0A` +
+      `Servicio: ${service}%0A` +
+      `Mensaje: ${message}`;
+    const url = `https://wa.me/5512999642?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
   };
 
   return (
