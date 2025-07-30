@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { services } from '../data/services';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -7,6 +8,7 @@ import ServiceModal from '../components/ServiceModal';
 export default function Services() {
   const { language, t } = useLanguage();
   const [searchParams] = useSearchParams();
+  const location = useLocation();
   const [activeCategory, setActiveCategory] = useState('campers');
 
   useEffect(() => {
@@ -15,7 +17,9 @@ export default function Services() {
     if (category && validCategories.includes(category)) {
       setActiveCategory(category);
     }
-  }, [searchParams]);
+    // Scroll al top al cambiar de ruta/categoría
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [searchParams, location]);
   const [selectedService, setSelectedService] = useState(null);
 
   const categories = [
