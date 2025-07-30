@@ -32,6 +32,20 @@ export default function Services() {
 
   const filteredServices = services.filter(service => service.category === activeCategory);
 
+  // refs para scroll automático en filtros
+  const filterRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const filterBarRef = useRef<HTMLDivElement | null>(null);
+
+  // Scroll manual centrado usando scrollLeft sobre el contenedor
+  useEffect(() => {
+    const bar = filterBarRef.current;
+    const btn = filterRefs.current[activeCategory];
+    if (bar && btn) {
+      const offset = btn.offsetLeft - bar.offsetLeft - (bar.clientWidth / 2) + (btn.clientWidth / 2);
+      bar.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+  }, [activeCategory]);
+
   return (
     <div className="min-h-screen bg-gray-900 pt-16">
       {/* Header */}
@@ -49,10 +63,11 @@ export default function Services() {
       {/* Categories */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-4 mb-12 scroll-x-mobile w-full px-6 md:flex-wrap md:justify-center md:overflow-visible md:gap-4 md:w-auto md:px-0">
+          <div ref={filterBarRef} className="flex gap-4 mb-12 scroll-x-mobile w-full px-6 md:flex-wrap md:justify-center md:overflow-visible md:gap-4 md:w-auto md:px-0">
             {categories.map((category) => (
               <button
                 key={category.id}
+                ref={el => filterRefs.current[category.id] = el}
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
                   activeCategory === category.id

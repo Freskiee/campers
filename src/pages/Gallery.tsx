@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Gallery() {
@@ -88,9 +88,23 @@ export default function Gallery() {
     { id: 'events', name: t('gallery.filter.events') },
   ];
 
-  const filteredImages = activeFilter === 'all' 
+  const filteredImages = activeFilter === 'all'
     ? galleryImages 
     : galleryImages.filter(img => img.category === activeFilter);
+
+  // refs para scroll automático en filtros
+  const filterRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const filterBarRef = useRef<HTMLDivElement | null>(null);
+
+  // Scroll manual centrado usando scrollLeft sobre el contenedor
+  useEffect(() => {
+    const bar = filterBarRef.current;
+    const btn = filterRefs.current[activeFilter];
+    if (bar && btn) {
+      const offset = btn.offsetLeft - bar.offsetLeft - (bar.clientWidth / 2) + (btn.clientWidth / 2);
+      bar.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+  }, [activeFilter]);
 
   return (
     <div className="min-h-screen bg-gray-900 pt-16">
@@ -109,10 +123,11 @@ export default function Gallery() {
       {/* Filters */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-4 mb-12 scroll-x-mobile w-full px-6 md:flex-wrap md:justify-center md:overflow-visible md:gap-4 md:w-auto md:px-0">
+          <div ref={filterBarRef} className="flex gap-4 mb-12 scroll-x-mobile w-full px-6 md:flex-wrap md:justify-center md:overflow-visible md:gap-4 md:w-auto md:px-0">
             {filters.map((filter) => (
               <button
                 key={filter.id}
+                ref={el => filterRefs.current[filter.id] = el}
                 onClick={() => setActiveFilter(filter.id)}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
                   activeFilter === filter.id
