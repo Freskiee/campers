@@ -34,6 +34,14 @@ export default function Contact() {
       `Mensaje: ${message}`;
     const url = `https://wa.me/5512999642?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
+    setFormData({
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      service: '',
+      message: ''
+    });
   };
 
   return (
