@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Scrollable filter bar for mobile */
+@media (max-width: 768px) {
+  .scroll-x-mobile {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scroll-x-mobile::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-x-mobile {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scroll-x-mobile > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+}
+

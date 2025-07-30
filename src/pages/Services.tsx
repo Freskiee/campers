@@ -35,7 +35,7 @@ export default function Services() {
       {/* Categories */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex gap-4 mb-12 scroll-x-mobile w-full px-6 md:flex-wrap md:justify-center md:overflow-visible md:gap-4 md:w-auto md:px-0">
             {categories.map((category) => (
               <button
                 key={category.id}
