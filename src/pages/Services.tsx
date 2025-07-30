@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { services } from '../data/services';
 import { useLanguage } from '../contexts/LanguageContext';
 import ServiceModal from '../components/ServiceModal';
 
 export default function Services() {
   const { language, t } = useLanguage();
+  const [searchParams] = useSearchParams();
   const [activeCategory, setActiveCategory] = useState('campers');
+
+  useEffect(() => {
+    const category = searchParams.get('category');
+    const validCategories = ['campers', 'bathrooms', 'rest', 'makeup', 'staff'];
+    if (category && validCategories.includes(category)) {
+      setActiveCategory(category);
+    }
+  }, [searchParams]);
   const [selectedService, setSelectedService] = useState(null);
 
   const categories = [
@@ -52,33 +62,33 @@ export default function Services() {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
             {filteredServices.map((service) => (
               <div
                 key={service.id}
-                className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 cursor-pointer"
+                className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col"
                 onClick={() => setSelectedService(service)}
               >
                 <img
                   src={service.image}
                   alt={service.name[language]}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-40 sm:h-48 object-cover"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                <div className="flex-1 flex flex-col p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
                     {service.name[language]}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-3">
+                  <p className="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3">
                     {service.dimensions}
                   </p>
-                  <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+                  <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-1 sm:line-clamp-2">
                     {service.description[language]}
                   </p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#C0965E] font-semibold">
+                  <div className="flex justify-between items-center mt-auto pt-2">
+                    <span className="text-[#C0965E] font-semibold text-base sm:text-lg">
                       {service.price}
                     </span>
-                    <button className="text-[#C0965E] hover:text-[#D4A86E] font-semibold">
+                    <button className="text-[#C0965E] hover:text-[#D4A86E] font-semibold border border-[#C0965E] rounded-md px-3 py-1 text-xs sm:text-sm transition-colors">
                       {t('common.view.more')}
                     </button>
                   </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -22,16 +23,11 @@ export default function Footer() {
                 className="flex items-center text-[#25D366] hover:text-[#20B954] font-semibold transition-colors"
                 aria-label="WhatsApp"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 mr-1">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 14.487a4.5 4.5 0 01-6.364 0l-.122-.122a4.5 4.5 0 010-6.364l.122-.122a4.5 4.5 0 016.364 0l.122.122a4.5 4.5 0 010 6.364l-.122.122z" />
-                </svg>
+                <img src="../dist/assets/WhatsApp.png" alt="WhatsApp" className="w-5 h-5 mr-1" />
                 5512999642
               </a>
               <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-[#C0965E]">
-                C
-              </div>
-              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-[#C0965E]">
-                M
+                CM
               </div>
             </div>
           </div>
@@ -41,7 +37,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center text-gray-400">
                 <Phone className="h-5 w-5 mr-3 text-[#C0965E]" />
-                <span>+52 55 1234 5678</span>
+                <span>+52 55 1299 9642</span>
               </div>
               <div className="flex items-center text-gray-400">
                 <Mail className="h-5 w-5 mr-3 text-[#C0965E]" />
@@ -61,21 +57,36 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Servicios</h4>
             <div className="space-y-2">
-              <p className="text-gray-400 hover:text-[#C0965E] cursor-pointer transition-colors">
+              <Link
+                to={{ pathname: '/services', search: '?category=campers' }}
+                className="block text-gray-400 hover:text-[#C0965E] transition-colors py-0"
+              >
                 {t('services.campers')}
-              </p>
-              <p className="text-gray-400 hover:text-[#C0965E] cursor-pointer transition-colors">
+              </Link>
+              <Link
+                to={{ pathname: '/services', search: '?category=bathrooms' }}
+                className="block text-gray-400 hover:text-[#C0965E] transition-colors py-0"
+              >
                 {t('services.bathrooms')}
-              </p>
-              <p className="text-gray-400 hover:text-[#C0965E] cursor-pointer transition-colors">
+              </Link>
+              <Link
+                to={{ pathname: '/services', search: '?category=rest' }}
+                className="block text-gray-400 hover:text-[#C0965E] transition-colors py-0"
+              >
                 {t('services.rest')}
-              </p>
-              <p className="text-gray-400 hover:text-[#C0965E] cursor-pointer transition-colors">
+              </Link>
+              <Link
+                to={{ pathname: '/services', search: '?category=makeup' }}
+                className="block text-gray-400 hover:text-[#C0965E] transition-colors py-0"
+              >
                 {t('services.makeup')}
-              </p>
-              <p className="text-gray-400 hover:text-[#C0965E] cursor-pointer transition-colors">
+              </Link>
+              <Link
+                to={{ pathname: '/services', search: '?category=staff' }}
+                className="block text-gray-400 hover:text-[#C0965E] transition-colors py-0"
+              >
                 {t('services.staff')}
-              </p>
+              </Link>
             </div>
           </div>
         </div>
