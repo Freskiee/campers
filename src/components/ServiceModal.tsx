@@ -17,7 +17,7 @@ export default function ServiceModal({ service, isOpen, onClose }: ServiceModalP
   const handleWhatsApp = () => {
     const serviceName = service.name[language];
     const message = encodeURIComponent(`${t('whatsapp.service')} ${serviceName}, ${t('whatsapp.service.details')}`);
-    window.open(`https://wa.me/5215512345678?text=${message}`, '_blank');
+    window.open(`https://wa.me/5512999642?text=${message}`, '_blank');
   };
 
   return (

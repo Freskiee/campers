@@ -14,7 +14,19 @@ export default function Footer() {
             <p className="text-gray-400 mb-6 max-w-md">
               {t('home.subtitle')}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 items-center">
+              <a
+                href="https://wa.me/5512999642"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-[#25D366] hover:text-[#20B954] font-semibold transition-colors"
+                aria-label="WhatsApp"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 mr-1">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 14.487a4.5 4.5 0 01-6.364 0l-.122-.122a4.5 4.5 0 010-6.364l.122-.122a4.5 4.5 0 016.364 0l.122.122a4.5 4.5 0 010 6.364l-.122.122z" />
+                </svg>
+                5512999642
+              </a>
               <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-[#C0965E]">
                 C
               </div>
