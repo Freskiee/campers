@@ -23,7 +23,7 @@ export default function Footer() {
                 className="flex items-center text-[#25D366] hover:text-[#20B954] font-semibold transition-colors"
                 aria-label="WhatsApp"
               >
-                <img src="../dist/assets/WhatsApp.png" alt="WhatsApp" className="w-5 h-5 mr-1" />
+                <img src="/assets/WhatsApp.png" alt="WhatsApp" className="w-5 h-5 mr-1" />
                 5512999642
               </a>
               <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-[#C0965E]">
