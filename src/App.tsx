@@ -32,13 +32,17 @@ function AppContent() {
   );
 }
 
+import ErrorBoundary from './errors/ErrorBoundary';
+
 function App() {
   return (
-    <LanguageProvider>
-      <Router>
-        <AppContent />
-      </Router>
-    </LanguageProvider>
+    <ErrorBoundary>
+      <LanguageProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </LanguageProvider>
+    </ErrorBoundary>
   );
 }
 
