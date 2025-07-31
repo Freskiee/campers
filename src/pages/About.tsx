@@ -55,34 +55,43 @@ export default function About() {
       </section>
 
       {/* Flip-Box Section */}
-      <section className="py-24 bg-black relative mb-60">
+      <section className="py-10 bg-black relative mb-0">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
-            <div className="flip-box-container w-full max-w-2xl">
-              <div className="flip-box-inner group cursor-pointer">
-                {/* Cara frontal */}
-                <div className="flip-box-front bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center min-h-[360px] transition-colors duration-300">
-                  <div className="flex flex-col items-center mb-6">
-                    <Award className="h-10 w-10 text-[#C0965E] mb-2" />
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Misión</h2>
-                    <p className="text-gray-700 text-base mb-6 text-center">Brindar soluciones innovadoras que impacten positivamente en nuestros clientes.</p>
-                    <Users className="h-10 w-10 text-[#C0965E] mb-2" />
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Visión</h2>
-                    <p className="text-gray-700 text-base text-center">Ser referentes en nuestra industria por excelencia, innovación y compromiso.</p>
-                  </div>
-                </div>
-                {/* Cara trasera */}
-                <div className="flip-box-back bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center min-h-[360px] transition-colors duration-300">
-                  <Shield className="h-10 w-10 text-[#C0965E] mb-4" />
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Nuestros Logros</h2>
-                  <ul className="text-gray-700 text-base space-y-2 text-center">
-                    <li>+100 proyectos exitosos</li>
-                    <li>Clientes en 5 países</li>
-                    <li>Reconocimientos en innovación</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            {(() => {
+  const [isFlipped, setIsFlipped] = React.useState(false);
+  const [hasFlipped, setHasFlipped] = React.useState(false);
+  return (
+    <div className="flip-box-container w-full max-w-2xl focus:outline-none" tabIndex={0}>
+      <div className={`flip-box-inner transition-transform duration-700 ${isFlipped ? 'flipped' : ''}`}
+        style={{ cursor: 'pointer', boxShadow: isFlipped ? '0 8px 32px #0004' : '0 4px 16px #0002', minHeight: 360 }}
+      >
+        {/* Cara frontal */}
+        <div className="flip-box-front bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center min-h-[360px] transition-colors duration-300 relative">
+          <div className="flex flex-col items-center mb-6">
+            <Award className="h-10 w-10 text-[#C0965E] mb-2" />
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Misión</h2>
+            <p className="text-gray-700 text-base mb-6 text-center">Brindar soluciones innovadoras que impacten positivamente en nuestros clientes.</p>
+            <Users className="h-10 w-10 text-[#C0965E] mb-2" />
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Visión</h2>
+            <p className="text-gray-700 text-base text-center">Ser referentes en nuestra industria por excelencia, innovación y compromiso.</p>
+          </div>
+        </div>
+        {/* Cara trasera */}
+        <div className="flip-box-back bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center min-h-[360px] transition-colors duration-300 relative">
+          <Shield className="h-10 w-10 text-[#C0965E] mb-4" />
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Nuestros Logros</h2>
+          <ul className="text-gray-700 text-base space-y-2 text-center mb-8">
+            <li>+100 proyectos exitosos</li>
+            <li>Clientes en 5 países</li>
+            <li>Reconocimientos en innovación</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+})()}
+
           </div>
         </div>
       </section>
