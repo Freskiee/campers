@@ -55,16 +55,24 @@ export default function About() {
       </section>
 
       {/* Flip-Box Section */}
-      <section className="py-10 bg-black relative mb-0">
+      <section className="py-16 bg-black relative mb-0">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
             {(() => {
   const [isFlipped, setIsFlipped] = React.useState(false);
-  const [hasFlipped, setHasFlipped] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
+  const [isHovered, setIsHovered] = React.useState(false);
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches || /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent));
+    }
+  }, []);
   return (
     <div className="flip-box-container w-full max-w-2xl focus:outline-none" tabIndex={0}>
       <div className={`flip-box-inner transition-transform duration-700 ${isFlipped ? 'flipped' : ''}`}
         style={{ cursor: 'pointer', boxShadow: isFlipped ? '0 8px 32px #0004' : '0 4px 16px #0002', minHeight: 360 }}
+        onMouseEnter={() => !isMobile && setIsHovered(true)}
+        onMouseLeave={() => !isMobile && setIsHovered(false)}
       >
         {/* Cara frontal */}
         <div className="flip-box-front bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center min-h-[360px] transition-colors duration-300 relative">
@@ -76,6 +84,11 @@ export default function About() {
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Visión</h2>
             <p className="text-gray-700 text-base text-center">Ser referentes en nuestra industria por excelencia, innovación y compromiso.</p>
           </div>
+          {(isMobile || (!isMobile && isHovered && !isFlipped)) && (
+            <span className="absolute top-4 left-1/2 -translate-x-1/2 text-xs text-[#C0965E] bg-white/90 px-3 py-1 rounded-full shadow mt-2 animate-pulse select-none pointer-events-none z-30">
+              Haz click para ver logros
+            </span>
+          )}
         </div>
         {/* Cara trasera */}
         <div className="flip-box-back bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center min-h-[360px] transition-colors duration-300 relative">
