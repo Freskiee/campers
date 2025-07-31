@@ -83,6 +83,49 @@ export const services: Service[] = [
       '/assets/imagenesCampers/campers/Descanso-BigCountry/caja3.jpg',
     ]
   },
+  {
+    id: 'camper-descanso-grand-juction',
+    name: { es: 'Camper Descanso - Grand Juction', en: 'Rest Camper - Grand Juction' },
+    category: 'campers',
+    image: '/assets/imagenesCampers/campers/Descanso-GrandJuction/caja.jpeg',
+    dimensions: '14m x 2.8m x 3.8m',
+    description: { 
+      es: 'El más lujoso de nuestra flota, con detalles dorados y equipamiento de primera clase.',
+      en: 'The most luxurious in our fleet, with golden details and first-class equipment.'
+    },
+    specifications: {
+      es: ['Climatización premium', 'Kitchen gourmet', 'Suite ejecutiva', 'Sala de juntas', 'Entretenimiento 4K', 'Detalles en oro'],
+      en: ['Premium climate control', 'Gourmet kitchen', 'Executive suite', 'Meeting room', '4K entertainment', 'Gold details']
+    },
+    price: 'Desde $25,000 MXN/día',
+    gallery: [
+      '/assets/imagenesCampers/campers/Descanso-GrandJuction/caja.jpeg',
+      '/assets/imagenesCampers/campers/Descanso-GrandJuction/cama.jpg',
+      '/assets/imagenesCampers/campers/Descanso-GrandJuction/comedor.jpg',
+    ]
+  },
+  {
+    id: 'camper-doble',
+    name: { es: 'Camper Doble', en: 'Dual Camper' },
+    category: 'campers',
+    image: '/assets/imagenesCampers/campers/Doble/caja.jpg',
+    dimensions: '14m x 2.8m x 3.8m',
+    description: { 
+      es: 'El más lujoso de nuestra flota, con detalles dorados y equipamiento de primera clase.',
+      en: 'The most luxurious in our fleet, with golden details and first-class equipment.'
+    },
+    specifications: {
+      es: ['Climatización premium', 'Kitchen gourmet', 'Suite ejecutiva', 'Sala de juntas', 'Entretenimiento 4K', 'Detalles en oro'],
+      en: ['Premium climate control', 'Gourmet kitchen', 'Executive suite', 'Meeting room', '4K entertainment', 'Gold details']
+    },
+    price: 'Desde $25,000 MXN/día',
+    gallery: [
+      '/assets/imagenesCampers/campers/Doble/caja.jpg',
+      '/assets/imagenesCampers/campers/Doble/cama.jpg',
+      '/assets/imagenesCampers/campers/Doble/tocador.jpg',
+      '/assets/imagenesCampers/campers/Doble/banio.jpg',
+    ]
+  },
 
   // Luxury Bathrooms
   {

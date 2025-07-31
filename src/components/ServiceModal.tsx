@@ -79,41 +79,49 @@ export default function ServiceModal({ service, isOpen, onClose }: ServiceModalP
 
               {/* Lightbox/carrousel */}
               {lightboxOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90" onClick={closeLightbox}>
-                  <button
-                    onClick={closeLightbox}
-                    className="absolute top-6 right-8 text-white hover:text-[#C0965E] text-4xl z-10"
-                    aria-label="Cerrar"
-                  >
-                    <X size={36} />
-                  </button>
-                  <button
-                    onClick={prevImage}
-                    className="absolute left-8 top-1/2 -translate-y-1/2 text-white hover:text-[#C0965E] text-4xl z-10"
-                    aria-label="Anterior"
-                  >
-                    <ChevronLeft size={40} />
-                  </button>
-                  <img
-                    src={service.gallery[lightboxIndex]}
-                    alt={`Imagen ${lightboxIndex + 1}`}
-                    className="max-w-[90vw] max-h-[80vh] w-auto h-auto object-contain mx-auto block rounded-lg bg-black"
-                    onClick={e => e.stopPropagation()}
-                  />
-                  <button
-                    onClick={nextImage}
-                    className="absolute right-8 top-1/2 -translate-y-1/2 text-white hover:text-[#C0965E] text-4xl z-10"
-                    aria-label="Siguiente"
-                  >
-                    <ChevronRight size={40} />
-                  </button>
-                  <div className="absolute bottom-8 left-0 right-0 text-center">
-                    <span className="text-white bg-black/60 px-4 py-2 rounded-lg text-lg font-semibold">
-                      {service.name[language]} ({lightboxIndex + 1}/{service.gallery.length})
-                    </span>
-                  </div>
-                </div>
-              )}
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90" onClick={closeLightbox}>
+    <div className="relative w-full flex items-center justify-center">
+      <button
+        onClick={closeLightbox}
+        className="absolute top-6 right-8 text-white hover:text-[#C0965E] text-4xl z-10"
+        aria-label="Cerrar"
+      >
+        <X size={36} />
+      </button>
+      {service.gallery.length > 1 && (
+        <button
+          onClick={prevImage}
+          className="absolute left-8 top-1/2 -translate-y-1/2 text-white hover:text-[#C0965E] text-4xl z-10"
+          aria-label="Anterior"
+        >
+          <ChevronLeft size={40} />
+        </button>
+      )}
+      <div className="relative flex flex-col items-center justify-center">
+        <img
+          src={service.gallery[lightboxIndex]}
+          alt={`Imagen ${lightboxIndex + 1}`}
+          className="max-w-[90vw] max-h-[80vh] w-auto h-auto object-contain mx-auto block rounded-lg bg-black"
+          onClick={e => e.stopPropagation()}
+        />
+        <div className="absolute left-0 bottom-0 w-full flex justify-center pointer-events-none z-30 mb-3 md:mb-4">
+          <span className="text-white bg-black/80 px-4 py-2 md:px-8 md:py-3 rounded-lg text-sm md:text-lg font-semibold pointer-events-auto max-w-[90vw] md:max-w-[80vw] break-words text-center shadow-lg">
+            {service.name[language]} ({lightboxIndex + 1}/{service.gallery.length})
+          </span>
+        </div>
+      </div>
+      {service.gallery.length > 1 && (
+        <button
+          onClick={nextImage}
+          className="absolute right-8 top-1/2 -translate-y-1/2 text-white hover:text-[#C0965E] text-4xl z-10"
+          aria-label="Siguiente"
+        >
+          <ChevronRight size={40} />
+        </button>
+      )}
+    </div>
+  </div>
+)}
 
               {/* Details */}
               <div className="space-y-6">

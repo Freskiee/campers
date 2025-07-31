@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 // Listado generado automáticamente de imágenes locales
@@ -76,11 +77,10 @@ export default function Gallery() {
                 key={filter.id}
                 ref={el => filterRefs.current[filter.id] = el}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                  activeFilter === filter.id
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${activeFilter === filter.id
                     ? 'bg-[#C0965E] text-black'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
-                }`}
+                  }`}
               >
                 {filter.name}
               </button>
@@ -98,7 +98,7 @@ export default function Gallery() {
                 <img
                   src={image.url}
                   alt={image.title}
-                  className={`w-full h-64 transition-transform duration-300 group-hover:scale-110 ${image.url.includes('Descanso-BigCountry/caja2.jpg') ? 'object-contain bg-black' : 'object-cover'}`}
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -115,7 +115,22 @@ export default function Gallery() {
       {/* Lightbox */}
       {selectedImage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90" onClick={() => setSelectedImage(null)}>
-          <div className="relative max-w-4xl max-h-screen p-4">
+          <div className="relative max-w-4xl max-h-screen p-4 flex items-center justify-center w-full">
+            {/* Flecha anterior */}
+            {filteredImages.length > 1 && (
+              <button
+                onClick={e => {
+                  e.stopPropagation();
+                  const idx = filteredImages.findIndex(img => img.url === selectedImage.url);
+                  const prevIdx = (idx - 1 + filteredImages.length) % filteredImages.length;
+                  setSelectedImage(filteredImages[prevIdx]);
+                }}
+                className="absolute left-8 top-1/2 -translate-y-1/2 text-white hover:text-[#C0965E] text-4xl z-10"
+                aria-label="Anterior"
+              >
+                <ChevronLeft size={40} />
+              </button>
+            )}
             <img
               src={selectedImage.url}
               alt={selectedImage.title}
@@ -123,17 +138,32 @@ export default function Gallery() {
               style={{ boxShadow: '0 2px 24px #000a' }}
               onClick={e => e.stopPropagation()}
             />
+            <div className="absolute left-0 bottom-6 md:bottom-10 w-full flex justify-center pointer-events-none z-30">
+              <span className="text-white bg-black/80 px-4 py-2 md:px-8 md:py-3 rounded-lg text-sm md:text-lg font-semibold pointer-events-auto max-w-[90vw] md:max-w-[80vw] break-words text-center shadow-lg">
+                {selectedImage.title}
+              </span>
+            </div>
+            {/* Flecha siguiente */}
+            {filteredImages.length > 1 && (
+              <button
+                onClick={e => {
+                  e.stopPropagation();
+                  const idx = filteredImages.findIndex(img => img.url === selectedImage.url);
+                  const nextIdx = (idx + 1) % filteredImages.length;
+                  setSelectedImage(filteredImages[nextIdx]);
+                }}
+                className="absolute right-8 top-1/2 -translate-y-1/2 text-white hover:text-[#C0965E] text-4xl z-10"
+                aria-label="Siguiente"
+              >
+                <ChevronRight size={40} />
+              </button>
+            )}
             <button
               onClick={() => setSelectedImage(null)}
               className="absolute top-4 right-4 text-white hover:text-[#C0965E] text-3xl"
             >
               ×
             </button>
-            <div className="absolute bottom-4 left-4 right-4 text-center">
-              <p className="text-white text-lg font-semibold bg-black/60 rounded-lg py-2 px-4">
-                {selectedImage.title}
-              </p>
-            </div>
           </div>
         </div>
       )}

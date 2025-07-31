@@ -27,7 +27,7 @@ export default function Footer() {
                 5512999642
               </a>
               <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-[#C0965E]">
-                CM
+                AHC
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>&copy; 2025 Campers México. Todos los derechos reservados.</p>
+          <p>&copy; 2025 <img src="/assets/logo-campers.png" alt="Campers México" className="h-8 inline-block align-middle" />. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

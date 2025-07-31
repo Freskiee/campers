@@ -20,9 +20,9 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold text-[#C0965E] hover:text-[#D4A86E] transition-colors">
-            Campers México
-          </Link>
+          <Link to="/" className="hover:opacity-80 transition-opacity">
+  <img src="/assets/logo-campers.png" alt="Campers México" className="h-10 md:h-12 w-auto inline-block align-middle" />
+</Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
