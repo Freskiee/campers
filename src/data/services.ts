@@ -13,10 +13,10 @@ export interface Service {
 export const services: Service[] = [
   // Campers
   {
-    id: 'camper-executive-black',
-    name: { es: 'Camper Ejecutivo Black', en: 'Executive Black Camper' },
+    id: 'camper-descanso-winderless',
+    name: { es: 'Camper Descanso - Winderless', en: 'Rest Camper - Winderless' },
     category: 'campers',
-    image: 'https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/imagenesCampers/campers/Descanso-Winderless/caja.jpg',
     dimensions: '12m x 2.5m x 3.5m',
     description: { 
       es: 'Camper de lujo con acabados premium, ideal para eventos corporativos y producciones de alto nivel.',
@@ -28,16 +28,17 @@ export const services: Service[] = [
     },
     price: 'Desde $15,000 MXN/día',
     gallery: [
-      'https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/2398220/pexels-photo-2398220.jpeg?auto=compress&cs=tinysrgb&w=800'
+      '/assets/imagenesCampers/campers/Descanso-Winderless/caja.jpg',
+      '/assets/imagenesCampers/campers/Descanso-Winderless/sala.jpg',
+      '/assets/imagenesCampers/campers/Descanso-Winderless/banio.jpg',
+      '/assets/imagenesCampers/campers/Descanso-Winderless/cocina.jpg',
     ]
   },
   {
-    id: 'camper-premium-gold',
-    name: { es: 'Camper Premium Gold', en: 'Premium Gold Camper' },
+    id: 'camper-descanso-everest',
+    name: { es: 'Camper Descanso - Everest', en: 'Rest Camper - Everest' },
     category: 'campers',
-    image: 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/imagenesCampers/campers/Descanso-Everest/caja.jpg',
     dimensions: '14m x 2.8m x 3.8m',
     description: { 
       es: 'El más lujoso de nuestra flota, con detalles dorados y equipamiento de primera clase.',
@@ -49,9 +50,37 @@ export const services: Service[] = [
     },
     price: 'Desde $25,000 MXN/día',
     gallery: [
-      'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/2398220/pexels-photo-2398220.jpeg?auto=compress&cs=tinysrgb&w=800'
+      '/assets/imagenesCampers/campers/Descanso-Everest/caja.jpg',
+      '/assets/imagenesCampers/campers/Descanso-Everest/cama.jpg',
+      '/assets/imagenesCampers/campers/Descanso-Everest/comedor.jpg',
+      '/assets/imagenesCampers/campers/Descanso-Everest/closets.jpg',
+    ]
+  },
+  {
+    id: 'camper-descanso-bigcountry',
+    name: { es: 'Camper Descanso - Big Country', en: 'Rest Camper - Big Country' },
+    category: 'campers',
+    image: '/assets/imagenesCampers/campers/Descanso-BigCountry/caja2.jpg',
+    dimensions: '14m x 2.8m x 3.8m',
+    description: { 
+      es: 'El más lujoso de nuestra flota, con detalles dorados y equipamiento de primera clase.',
+      en: 'The most luxurious in our fleet, with golden details and first-class equipment.'
+    },
+    specifications: {
+      es: ['Climatización premium', 'Kitchen gourmet', 'Suite ejecutiva', 'Sala de juntas', 'Entretenimiento 4K', 'Detalles en oro'],
+      en: ['Premium climate control', 'Gourmet kitchen', 'Executive suite', 'Meeting room', '4K entertainment', 'Gold details']
+    },
+    price: 'Desde $25,000 MXN/día',
+    gallery: [
+      '/assets/imagenesCampers/campers/Descanso-BigCountry/caja2.jpg',
+      '/assets/imagenesCampers/campers/Descanso-BigCountry/cama.jpg',
+      '/assets/imagenesCampers/campers/Descanso-BigCountry/banio.jpg',
+      '/assets/imagenesCampers/campers/Descanso-BigCountry/sala.jpg',
+      '/assets/imagenesCampers/campers/Descanso-BigCountry/cocina.jpg',
+      '/assets/imagenesCampers/campers/Descanso-BigCountry/interior.jpg',
+      '/assets/imagenesCampers/campers/Descanso-BigCountry/cuarto.jpg',
+      '/assets/imagenesCampers/campers/Descanso-BigCountry/caja1.jpg',
+      '/assets/imagenesCampers/campers/Descanso-BigCountry/caja3.jpg',
     ]
   },
 

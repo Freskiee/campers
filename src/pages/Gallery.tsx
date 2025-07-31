@@ -1,102 +1,49 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+
+// Listado generado automáticamente de imágenes locales
+const importedImages = [
+  // Campers
+  { url: '/assets/imagenesCampers/campers/Descanso-GrandJuction/caja.jpeg', category: 'campers', title: 'Descanso Grand Juction' },
+  { url: '/assets/imagenesCampers/campers/Descanso-Everest/caja.jpg', category: 'campers', title: 'Descanso Everest' },
+  { url: '/assets/imagenesCampers/campers/Descanso-Winderless/caja.jpg', category: 'campers', title: 'Descanso Winderless' },
+  { url: '/assets/imagenesCampers/campers/Descanso-BigCountry/caja2.jpg', category: 'campers', title: 'Descanso BigCountry' },
+  // Camionetas
+  { url: '/assets/imagenesCampers/camionetas/suv-blanca.jpg', category: 'camionetas', title: 'SUV blanca' },
+  { url: '/assets/imagenesCampers/camionetas/suv-negra.jpg', category: 'camionetas', title: 'SUV negra' },
+  // Plantas de luz
+  { url: '/assets/imagenesCampers/plantasDeLuz/plantaLuz.jpg', category: 'plantasDeLuz', title: 'Planta de luz' },
+  // Baños 10-servicios
+  { url: '/assets/imagenesCampers/banos/10-servicios/caja.jpg', category: 'banos', title: 'Baño 10-servicios' },
+  // Baños 3-servicios
+  { url: '/assets/imagenesCampers/banos/3-servicios/caja.jpg', category: 'banos', title: 'Baño 3-servicios' },
+  // Baños 6-servicios
+  { url: '/assets/imagenesCampers/banos/6-servicios/caja.jpg', category: 'banos', title: 'Baño 6-servicios' },
+];
+
+type GalleryImage = { url: string; category: string; title: string };
 
 export default function Gallery() {
   const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const galleryImages = [
-    { 
-      id: 1, 
-      url: 'https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'campers',
-      title: 'Camper Executive en evento corporativo'
-    },
-    { 
-      id: 2, 
-      url: 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'campers',
-      title: 'Camper Premium Gold'
-    },
-    { 
-      id: 3, 
-      url: 'https://images.pexels.com/photos/6585607/pexels-photo-6585607.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'bathrooms',
-      title: 'Baño VIP Suite'
-    },
-    { 
-      id: 4, 
-      url: 'https://images.pexels.com/photos/1358912/pexels-photo-1358912.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'bathrooms',
-      title: 'Baño Ejecutivo'
-    },
-    { 
-      id: 5, 
-      url: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'events',
-      title: 'Evento de gala'
-    },
-    { 
-      id: 6, 
-      url: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'events',
-      title: 'Boda de lujo'
-    },
-    { 
-      id: 7, 
-      url: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'campers',
-      title: 'Lounge Platinum'
-    },
-    { 
-      id: 8, 
-      url: 'https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'campers',
-      title: 'Estudio de maquillaje'
-    },
-    { 
-      id: 9, 
-      url: 'https://images.pexels.com/photos/1387174/pexels-photo-1387174.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'events',
-      title: 'Festival de música'
-    },
-    { 
-      id: 10, 
-      url: 'https://images.pexels.com/photos/6585595/pexels-photo-6585595.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'bathrooms',
-      title: 'Instalaciones de lujo'
-    },
-    { 
-      id: 11, 
-      url: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'campers',
-      title: 'Van de staff luxury'
-    },
-    { 
-      id: 12, 
-      url: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=800', 
-      category: 'events',
-      title: 'Evento corporativo'
-    }
-  ];
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   const filters = [
-    { id: 'all', name: t('gallery.filter.all') },
-    { id: 'campers', name: t('gallery.filter.campers') },
-    { id: 'bathrooms', name: t('gallery.filter.bathrooms') },
-    { id: 'events', name: t('gallery.filter.events') },
+    { id: 'all', name: 'Todos' },
+    { id: 'campers', name: 'Campers' },
+    { id: 'banos', name: 'Baños' },
+    { id: 'camionetas', name: 'Camionetas' },
+    { id: 'plantasDeLuz', name: 'Plantas de Luz' },
   ];
 
   const filteredImages = activeFilter === 'all'
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === activeFilter);
+    ? importedImages
+    : importedImages.filter(img => img.category === activeFilter);
 
   // refs para scroll automático en filtros
   const filterRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const filterBarRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll manual centrado usando scrollLeft sobre el contenedor
   useEffect(() => {
     const bar = filterBarRef.current;
     const btn = filterRefs.current[activeFilter];
@@ -142,16 +89,17 @@ export default function Gallery() {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredImages.map((image) => (
+            {filteredImages.map((image, idx) => (
               <div
-                key={image.id}
+                key={image.url + idx}
                 className="relative overflow-hidden rounded-lg cursor-pointer group"
                 onClick={() => setSelectedImage(image)}
               >
                 <img
                   src={image.url}
                   alt={image.title}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                  className={`w-full h-64 transition-transform duration-300 group-hover:scale-110 ${image.url.includes('Descanso-BigCountry/caja2.jpg') ? 'object-contain bg-black' : 'object-cover'}`}
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <p className="text-white text-center px-4 font-semibold">
@@ -171,7 +119,9 @@ export default function Gallery() {
             <img
               src={selectedImage.url}
               alt={selectedImage.title}
-              className="max-w-full max-h-full object-contain"
+              className="w-full max-h-[80vh] object-contain rounded-lg bg-black mx-auto block"
+              style={{ boxShadow: '0 2px 24px #000a' }}
+              onClick={e => e.stopPropagation()}
             />
             <button
               onClick={() => setSelectedImage(null)}

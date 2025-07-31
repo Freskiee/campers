@@ -1,5 +1,5 @@
-import React from 'react';
-import { X, MessageCircle, Ruler, DollarSign } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, MessageCircle, Ruler, DollarSign, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Service } from '../data/services';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -11,6 +11,8 @@ interface ServiceModalProps {
 
 export default function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
   const { language, t } = useLanguage();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   if (!isOpen) return null;
 
@@ -18,6 +20,20 @@ export default function ServiceModal({ service, isOpen, onClose }: ServiceModalP
     const serviceName = service.name[language];
     const message = encodeURIComponent(`${t('whatsapp.service')} ${serviceName}, ${t('whatsapp.service.details')}`);
     window.open(`https://wa.me/5512999642?text=${message}`, '_blank');
+  };
+
+  const openLightbox = (idx: number) => {
+    setLightboxIndex(idx);
+    setLightboxOpen(true);
+  };
+  const closeLightbox = () => setLightboxOpen(false);
+  const nextImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setLightboxIndex((prev) => (prev + 1) % service.gallery.length);
+  };
+  const prevImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setLightboxIndex((prev) => (prev - 1 + service.gallery.length) % service.gallery.length);
   };
 
   return (
@@ -45,7 +61,8 @@ export default function ServiceModal({ service, isOpen, onClose }: ServiceModalP
                 <img
                   src={service.image}
                   alt={service.name[language]}
-                  className="w-full h-64 object-cover rounded-lg"
+                  className="w-full max-h-[60vh] object-contain rounded-lg bg-black mx-auto cursor-pointer"
+                  onClick={() => openLightbox(0)}
                 />
                 <div className="grid grid-cols-3 gap-2">
                   {service.gallery.slice(1).map((img, index) => (
@@ -53,11 +70,50 @@ export default function ServiceModal({ service, isOpen, onClose }: ServiceModalP
                       key={index}
                       src={img}
                       alt={`${service.name[language]} ${index + 2}`}
-                      className="w-full h-20 object-cover rounded-lg"
+                      className="w-full max-h-20 object-contain rounded-lg bg-black mx-auto cursor-pointer"
+                      onClick={() => openLightbox(index + 1)}
                     />
                   ))}
                 </div>
               </div>
+
+              {/* Lightbox/carrousel */}
+              {lightboxOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90" onClick={closeLightbox}>
+                  <button
+                    onClick={closeLightbox}
+                    className="absolute top-6 right-8 text-white hover:text-[#C0965E] text-4xl z-10"
+                    aria-label="Cerrar"
+                  >
+                    <X size={36} />
+                  </button>
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-8 top-1/2 -translate-y-1/2 text-white hover:text-[#C0965E] text-4xl z-10"
+                    aria-label="Anterior"
+                  >
+                    <ChevronLeft size={40} />
+                  </button>
+                  <img
+                    src={service.gallery[lightboxIndex]}
+                    alt={`Imagen ${lightboxIndex + 1}`}
+                    className="max-w-[90vw] max-h-[80vh] w-auto h-auto object-contain mx-auto block rounded-lg bg-black"
+                    onClick={e => e.stopPropagation()}
+                  />
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-8 top-1/2 -translate-y-1/2 text-white hover:text-[#C0965E] text-4xl z-10"
+                    aria-label="Siguiente"
+                  >
+                    <ChevronRight size={40} />
+                  </button>
+                  <div className="absolute bottom-8 left-0 right-0 text-center">
+                    <span className="text-white bg-black/60 px-4 py-2 rounded-lg text-lg font-semibold">
+                      {service.name[language]} ({lightboxIndex + 1}/{service.gallery.length})
+                    </span>
+                  </div>
+                </div>
+              )}
 
               {/* Details */}
               <div className="space-y-6">

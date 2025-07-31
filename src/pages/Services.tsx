@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { services } from '../data/services';
 import { useLanguage } from '../contexts/LanguageContext';
 import ServiceModal from '../components/ServiceModal';
+import { Service } from '../data/services';
 
 export default function Services() {
   const { language, t } = useLanguage();
@@ -20,7 +21,7 @@ export default function Services() {
     // Scroll al top al cambiar de ruta/categoría
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [searchParams, location]);
-  const [selectedService, setSelectedService] = useState(null);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
 
   const categories = [
     { id: 'campers', name: t('services.campers') },
