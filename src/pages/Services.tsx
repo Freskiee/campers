@@ -48,6 +48,7 @@ export default function Services() {
   }, [activeCategory]);
 
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+const [lastTap, setLastTap] = useState<{ time: number; idx: number | null }>({ time: 0, idx: null });
   const getImage = (service: Service, hovered: boolean) => {
     if (hovered && service.gallery && service.gallery.length > 1) {
       return service.gallery[1];
@@ -98,12 +99,50 @@ export default function Services() {
                 onClick={() => setSelectedService(service)}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
+                onTouchStart={e => {
+  setHoveredIdx(idx);
+  const now = Date.now();
+  if (lastTap.idx === idx && now - lastTap.time < 400) {
+    setSelectedService(service);
+    setLastTap({ time: 0, idx: null });
+  } else {
+    setLastTap({ time: now, idx });
+  }
+}}
+onTouchEnd={e => {
+  // Si fue doble tap, hoveredIdx ya se limpia arriba
+  if (!(lastTap.idx === idx && Date.now() - lastTap.time < 400)) {
+    setHoveredIdx(null);
+  }
+}}
+onTouchCancel={() => setHoveredIdx(null)}
               >
-                <img
-                  src={getImage(service, hoveredIdx === idx)}
-                  alt={service.name[language]}
-                  className="w-full h-40 sm:h-48 object-cover"
-                />
+                <div className="relative w-full h-40 sm:h-48 group">
+  <img
+    src={service.image}
+    alt={service.name[language]}
+    className={`w-full h-40 sm:h-48 object-cover absolute inset-0 transition-opacity duration-300 ${hoveredIdx === idx ? 'opacity-0' : 'opacity-100'}`}
+    loading="lazy"
+    draggable={false}
+  />
+  {service.gallery && service.gallery.length > 1 && (
+    <img
+      src={service.gallery[1]}
+      alt={service.name[language] + ' alternativa'}
+      className={`w-full h-40 sm:h-48 object-cover absolute inset-0 transition-opacity duration-300 ${hoveredIdx === idx ? 'opacity-100' : 'opacity-0'}`}
+      loading="lazy"
+      draggable={false}
+    />
+  )}
+  {/* Hint visual animado */}
+  <div
+    className={`pointer-events-none absolute inset-0 flex items-center justify-center transition-opacity duration-300 z-10 ${hoveredIdx === idx ? 'opacity-100' : 'opacity-0'}`}
+  >
+    <span className="bg-black/70 text-[#C0965E] px-4 py-2 rounded-full text-sm font-semibold shadow-lg animate-pulse select-none">
+      Ver más
+    </span>
+  </div>
+</div>
                 <div className="flex-1 flex flex-col p-4 sm:p-6">
                   <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
                     {service.name[language]}
@@ -118,9 +157,7 @@ export default function Services() {
                     <span className="text-[#C0965E] font-semibold text-base sm:text-lg">
                       {service.price}
                     </span>
-                    <button className="text-[#C0965E] hover:text-[#D4A86E] font-semibold border border-[#C0965E] rounded-md px-3 py-1 text-xs sm:text-sm transition-colors">
-                      {t('common.view.more')}
-                    </button>
+                    
                   </div>
                 </div>
               </div>

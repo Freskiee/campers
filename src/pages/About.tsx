@@ -11,7 +11,7 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 pt-16">
+    <div className="min-h-screen bg-black pt-16">
       {/* Header */}
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -25,10 +25,10 @@ export default function About() {
       </section>
 
       {/* Story Section */}
-      <section className="py-20">
+      <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="bg-[#232c3b] rounded-xl shadow-xl p-10 mb-12">
               <h2 className="text-3xl font-bold text-white mb-6">
                 {t('about.story.title')}
               </h2>
@@ -54,91 +54,48 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-20 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="text-center">
-              <div className="bg-gray-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award className="h-8 w-8 text-[#C0965E]" />
+      {/* Flip-Box Section */}
+      <section className="py-24 bg-black relative mb-60">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center">
+            <div className="flip-box-container w-full max-w-2xl">
+              <div className="flip-box-inner group cursor-pointer">
+                {/* Cara frontal */}
+                <div className="flip-box-front bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center min-h-[360px] transition-colors duration-300">
+                  <div className="flex flex-col items-center mb-6">
+                    <Award className="h-10 w-10 text-[#C0965E] mb-2" />
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Misión</h2>
+                    <p className="text-gray-700 text-base mb-6 text-center">Brindar soluciones innovadoras que impacten positivamente en nuestros clientes.</p>
+                    <Users className="h-10 w-10 text-[#C0965E] mb-2" />
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Visión</h2>
+                    <p className="text-gray-700 text-base text-center">Ser referentes en nuestra industria por excelencia, innovación y compromiso.</p>
+                  </div>
+                </div>
+                {/* Cara trasera */}
+                <div className="flip-box-back bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center min-h-[360px] transition-colors duration-300">
+                  <Shield className="h-10 w-10 text-[#C0965E] mb-4" />
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Nuestros Logros</h2>
+                  <ul className="text-gray-700 text-base space-y-2 text-center">
+                    <li>+100 proyectos exitosos</li>
+                    <li>Clientes en 5 países</li>
+                    <li>Reconocimientos en innovación</li>
+                  </ul>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                {t('about.mission.title')}
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                {t('about.mission.content')}
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-gray-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="h-8 w-8 text-[#C0965E]" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                {t('about.vision.title')}
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                {t('about.vision.content')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Nuestros Logros
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-gray-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-8 w-8 text-[#C0965E]" />
-              </div>
-              <div className="text-3xl font-bold text-[#C0965E] mb-2">500+</div>
-              <div className="text-gray-300">Eventos exitosos</div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-gray-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-[#C0965E]" />
-              </div>
-              <div className="text-3xl font-bold text-[#C0965E] mb-2">200+</div>
-              <div className="text-gray-300">Clientes satisfechos</div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-gray-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8 text-[#C0965E]" />
-              </div>
-              <div className="text-3xl font-bold text-[#C0965E] mb-2">24/7</div>
-              <div className="text-gray-300">Disponibilidad</div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-gray-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8 text-[#C0965E]" />
-              </div>
-              <div className="text-3xl font-bold text-[#C0965E] mb-2">100%</div>
-              <div className="text-gray-300">Confiabilidad</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Clients */}
+      {/* Clients Section */}
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 bg-black/80 rounded-xl shadow-xl py-8 px-4">
+
             <h2 className="text-3xl font-bold text-white mb-4">
               Clientes que Confían en Nosotros
             </h2>
           </div>
-
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {clients.map((client, index) => (
               <div
@@ -153,6 +110,35 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <style>{`
+        .flip-box-container {
+          perspective: 1200px;
+        }
+        .flip-box-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.7s cubic-bezier(.4,2,.3,1), box-shadow 0.3s;
+          transform-style: preserve-3d;
+        }
+        .flip-box-container:focus .flip-box-inner,
+        .flip-box-container:active .flip-box-inner,
+        .flip-box-container:hover .flip-box-inner,
+        .flip-box-inner.flipped {
+          transform: rotateY(180deg);
+        }
+        .flip-box-front,
+        .flip-box-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+        }
+        .flip-box-back {
+          transform: rotateY(180deg);
+        }
+      `}</style>
     </div>
   );
 }
