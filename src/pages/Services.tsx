@@ -47,6 +47,14 @@ export default function Services() {
     }
   }, [activeCategory]);
 
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const getImage = (service: Service, hovered: boolean) => {
+    if (hovered && service.gallery && service.gallery.length > 1) {
+      return service.gallery[1];
+    }
+    return service.image;
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 pt-16">
       {/* Header */}
@@ -83,14 +91,16 @@ export default function Services() {
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-            {filteredServices.map((service) => (
+            {filteredServices.map((service, idx) => (
               <div
                 key={service.id}
                 className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col"
                 onClick={() => setSelectedService(service)}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
               >
                 <img
-                  src={service.image}
+                  src={getImage(service, hoveredIdx === idx)}
                   alt={service.name[language]}
                   className="w-full h-40 sm:h-48 object-cover"
                 />
