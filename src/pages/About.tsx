@@ -41,7 +41,7 @@ export default function About() {
             </div>
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/assets/logo-campers.png"
                 alt="Campers México"
                 className="rounded-lg shadow-2xl"
               />
@@ -89,6 +89,7 @@ export default function About() {
               Ver logros
             </span>
           )}
+          {/* Al girar la tarjeta, ocultar el texto "Ver logros" */}
         </div>
         {/* Cara trasera */}
         <div className="flip-box-back bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center min-h-[360px] transition-colors duration-300 relative">

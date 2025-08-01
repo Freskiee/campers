@@ -13,7 +13,7 @@ export default function Home() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url("/assets/fondo.jpg")',
+            backgroundImage: 'url("/assets/logo-campers-2.png")',
           }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
