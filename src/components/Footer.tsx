@@ -26,9 +26,7 @@ export default function Footer() {
                 <img src="/assets/WhatsApp.png" alt="WhatsApp" className="w-5 h-5 mr-1" />
                 5512999642
               </a>
-              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-[#C0965E]">
-                AHC
-              </div>
+              <img src="/assets/logo-campersmexico.png" alt="Campers México Logo" className="w-12 h-12 rounded-lg object-contain" />
             </div>
           </div>
 
@@ -70,16 +68,10 @@ export default function Footer() {
                 {t('services.bathrooms')}
               </Link>
               <Link
-                to={{ pathname: '/services', search: '?category=rest' }}
-                className="block text-gray-400 hover:text-[#C0965E] transition-colors py-0"
-              >
-                {t('services.rest')}
-              </Link>
-              <Link
                 to={{ pathname: '/services', search: '?category=makeup' }}
                 className="block text-gray-400 hover:text-[#C0965E] transition-colors py-0"
               >
-                {t('services.makeup')}
+                {t('services.plantasDeLuz')}
               </Link>
               <Link
                 to={{ pathname: '/services', search: '?category=staff' }}
@@ -92,7 +84,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>&copy; 2025 <img src="/assets/logo-campers.png" alt="Campers México" className="h-8 inline-block align-middle" />. Todos los derechos reservados.</p>
+          <p>&copy; 2025 <img src="/assets/logo-campersmexico.png" alt="Campers México" className="h-8 inline-block align-middle" />. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

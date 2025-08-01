@@ -84,9 +84,9 @@ export default function About() {
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Visión</h2>
             <p className="text-gray-700 text-base text-center">Ser referentes en nuestra industria por excelencia, innovación y compromiso.</p>
           </div>
-          {(isMobile || (!isMobile && isHovered && !isFlipped)) && (
-            <span className="absolute top-4 left-1/2 -translate-x-1/2 text-xs text-[#C0965E] bg-white/90 px-3 py-1 rounded-full shadow mt-2 animate-pulse select-none pointer-events-none z-30">
-              Haz click para ver logros
+          {(!isFlipped && (isMobile || (!isMobile && isHovered))) && (
+            <span className="absolute top-4 left-1/2 -translate-x-1/2 text-xs font-bold text-black bg-white/95 px-3 py-1 rounded-full shadow mt-2 animate-pulse select-none pointer-events-none z-30">
+              Ver logros
             </span>
           )}
         </div>

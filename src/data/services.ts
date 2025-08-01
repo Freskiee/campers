@@ -126,13 +126,83 @@ export const services: Service[] = [
       '/assets/imagenesCampers/campers/Doble/banio.jpg',
     ]
   },
+  {
+    id: 'camper-maquillaje',
+    name: { es: 'Camper Maquillaje', en: 'Makeup Camper' },
+    category: 'campers',
+    image: '/assets/imagenesCampers/campers/Maquillaje/caja1.jpg',
+    dimensions: '14m x 2.8m x 3.8m',
+    description: { 
+      es: 'El más lujoso de nuestra flota, con detalles dorados y equipamiento de primera clase.',
+      en: 'The most luxurious in our fleet, with golden details and first-class equipment.'
+    },
+    specifications: {
+      es: ['Climatización premium', 'Kitchen gourmet', 'Suite ejecutiva', 'Sala de juntas', 'Entretenimiento 4K', 'Detalles en oro'],
+      en: ['Premium climate control', 'Gourmet kitchen', 'Executive suite', 'Meeting room', '4K entertainment', 'Gold details']
+    },
+    price: 'Desde $25,000 MXN/día',
+    gallery: [
+      '/assets/imagenesCampers/campers/Maquillaje/caja1.jpg',
+      '/assets/imagenesCampers/campers/Maquillaje/espejos2.jpg',
+      '/assets/imagenesCampers/campers/Maquillaje/espejos.jpg',
+      '/assets/imagenesCampers/campers/Maquillaje/caja3.jpg',
+      '/assets/imagenesCampers/campers/Maquillaje/caja2.jpg',
+      '/assets/imagenesCampers/campers/Maquillaje/banio2.jpg',
+      '/assets/imagenesCampers/campers/Maquillaje/banio.jpg',
+    ]
+  },
+  {
+    id: 'camper-safari',
+    name: { es: 'Motor Home Safari', en: 'Motor Home Safari' },
+    category: 'campers',
+    image: '/assets/imagenesCampers/campers/MotorHome-Safari/caja.jpg',
+    dimensions: '14m x 2.8m x 3.8m',
+    description: { 
+      es: 'El más lujoso de nuestra flota, con detalles dorados y equipamiento de primera clase.',
+      en: 'The most luxurious in our fleet, with golden details and first-class equipment.'
+    },
+    specifications: {
+      es: ['Climatización premium', 'Kitchen gourmet', 'Suite ejecutiva', 'Sala de juntas', 'Entretenimiento 4K', 'Detalles en oro'],
+      en: ['Premium climate control', 'Gourmet kitchen', 'Executive suite', 'Meeting room', '4K entertainment', 'Gold details']
+    },
+    price: 'Desde $25,000 MXN/día',
+    gallery: [
+      '/assets/imagenesCampers/campers/MotorHome-Safari/caja.jpg',
+      '/assets/imagenesCampers/campers/MotorHome-Safari/sala.jpg',
+      '/assets/imagenesCampers/campers/MotorHome-Safari/interiores.jpg',
+      '/assets/imagenesCampers/campers/MotorHome-Safari/cocina.jpg',
+      '/assets/imagenesCampers/campers/MotorHome-Safari/banio.jpg',
+    ]
+  },
+  {
+    id: 'camper-triple',
+    name: { es: 'Camper Triple', en: 'Triple Camper' },
+    category: 'campers',
+    image: '/assets/imagenesCampers/campers/Triple/caja.jpg',
+    dimensions: '14m x 2.8m x 3.8m',
+    description: { 
+      es: 'El más lujoso de nuestra flota, con detalles dorados y equipamiento de primera clase.',
+      en: 'The most luxurious in our fleet, with golden details and first-class equipment.'
+    },
+    specifications: {
+      es: ['Climatización premium', 'Kitchen gourmet', 'Suite ejecutiva', 'Sala de juntas', 'Entretenimiento 4K', 'Detalles en oro'],
+      en: ['Premium climate control', 'Gourmet kitchen', 'Executive suite', 'Meeting room', '4K entertainment', 'Gold details']
+    },
+    price: 'Desde $25,000 MXN/día',
+    gallery: [
+      '/assets/imagenesCampers/campers/Triple/caja.jpg',
+      '/assets/imagenesCampers/campers/Triple/tocador.jpg',
+      '/assets/imagenesCampers/campers/Triple/cama.jpg',
+      '/assets/imagenesCampers/campers/Triple/banio.jpg',
+    ]
+  },
 
   // Luxury Bathrooms
   {
-    id: 'bathroom-vip-suite',
-    name: { es: 'Baño VIP Suite', en: 'VIP Bathroom Suite' },
+    id: 'bathroom-3-services',
+    name: { es: 'Baño 3-servicios', en: '3-services Bathroom' },
     category: 'bathrooms',
-    image: 'https://images.pexels.com/photos/6585607/pexels-photo-6585607.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/imagenesCampers/banos/3-servicios/caja.jpg',
     dimensions: '6m x 2.5m x 3m',
     description: { 
       es: 'Baños de lujo con acabados de mármol y amenidades premium para eventos exclusivos.',
@@ -144,16 +214,20 @@ export const services: Service[] = [
     },
     price: 'Desde $8,000 MXN/día',
     gallery: [
-      'https://images.pexels.com/photos/6585607/pexels-photo-6585607.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1358912/pexels-photo-1358912.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/6585595/pexels-photo-6585595.jpeg?auto=compress&cs=tinysrgb&w=800'
+      '/assets/imagenesCampers/banos/3-servicios/caja.jpg',
+      '/assets/imagenesCampers/banos/3-servicios/caja-abierta.jpg',
+      '/assets/imagenesCampers/banos/3-servicios/lavamanos.jpg',
+      '/assets/imagenesCampers/banos/3-servicios/mingitorio.jpg',
+      '/assets/imagenesCampers/banos/3-servicios/damas.jpg',
+      '/assets/imagenesCampers/banos/3-servicios/caballeros.jpg',
+      '/assets/imagenesCampers/banos/3-servicios/escaleras.jpg',
     ]
   },
   {
-    id: 'bathroom-executive',
-    name: { es: 'Baño Ejecutivo', en: 'Executive Bathroom' },
+    id: 'bathroom-6-services',
+    name: { es: 'Baño 6-servicios', en: '6-services Bathroom' },
     category: 'bathrooms',
-    image: 'https://images.pexels.com/photos/1358912/pexels-photo-1358912.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/imagenesCampers/banos/6-servicios/caja.jpg',
     dimensions: '4m x 2m x 2.8m',
     description: { 
       es: 'Solución elegante y funcional para eventos corporativos y bodas de mediano tamaño.',
@@ -165,64 +239,65 @@ export const services: Service[] = [
     },
     price: 'Desde $5,500 MXN/día',
     gallery: [
-      'https://images.pexels.com/photos/1358912/pexels-photo-1358912.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/6585607/pexels-photo-6585607.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/6585595/pexels-photo-6585595.jpeg?auto=compress&cs=tinysrgb&w=800'
+      '/assets/imagenesCampers/banos/6-servicios/caja.jpg',
+      '/assets/imagenesCampers/banos/6-servicios/lavabos.jpg',
+      '/assets/imagenesCampers/banos/6-servicios/cubiculos2.jpg',
+      '/assets/imagenesCampers/banos/6-servicios/cubiculos.jpg',
+      '/assets/imagenesCampers/banos/6-servicios/aire.jpg',
+    ]
+  },
+  {
+    id: 'bathroom-10-services',
+    name: { es: 'Baño 10-servicios', en: '10-services Bathroom' },
+    category: 'bathrooms',
+    image: '/assets/imagenesCampers/banos/10-servicios/caja.jpg',
+    dimensions: '4m x 2m x 2.8m',
+    description: { 
+      es: 'Solución elegante y funcional para eventos corporativos y bodas de mediano tamaño.',
+      en: 'Elegant and functional solution for corporate events and medium-sized weddings.'
+    },
+    specifications: {
+      es: ['Diseño moderno', 'Lavamanos dobles', 'Espejo con luz LED', 'Ventilación forzada', 'Piso antiderrapante', 'Dispensadores automáticos'],
+      en: ['Modern design', 'Double sinks', 'LED mirror lighting', 'Forced ventilation', 'Non-slip flooring', 'Automatic dispensers']
+    },
+    price: 'Desde $5,500 MXN/día',
+    gallery: [
+      '/assets/imagenesCampers/banos/10-servicios/caja.jpg',
+      '/assets/imagenesCampers/banos/10-servicios/escalones.jpg',
+      '/assets/imagenesCampers/banos/10-servicios/mingitorios.jpg',
+      '/assets/imagenesCampers/banos/10-servicios/cubiculos.jpg',
     ]
   },
 
-  // Rest Areas
-  {
-    id: 'lounge-platinum',
-    name: { es: 'Lounge Platinum', en: 'Platinum Lounge' },
-    category: 'rest',
-    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800',
-    dimensions: '10m x 3m x 3.5m',
-    description: { 
-      es: 'Zona de descanso premium con mobiliario de lujo y ambiente climatizado.',
-      en: 'Premium rest area with luxury furniture and climate-controlled environment.'
-    },
-    specifications: {
-      es: ['Mobiliario de diseño', 'Bar equipado', 'Sistema audiovisual', 'Iluminación ambiental', 'Aire acondicionado', 'WiFi de alta velocidad'],
-      en: ['Designer furniture', 'Equipped bar', 'Audiovisual system', 'Ambient lighting', 'Air conditioning', 'High-speed WiFi']
-    },
-    price: 'Desde $12,000 MXN/día',
-    gallery: [
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571452/pexels-photo-1571452.jpeg?auto=compress&cs=tinysrgb&w=800'
-    ]
-  },
 
-  // Makeup Trailers
+  // Planta de Luz
   {
-    id: 'makeup-studio-pro',
-    name: { es: 'Estudio de Maquillaje Pro', en: 'Pro Makeup Studio' },
-    category: 'makeup',
-    image: 'https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=800',
-    dimensions: '8m x 2.5m x 3m',
+    id: 'planta-de-luz',
+    name: { es: 'Planta de Luz', en: 'Plant of Light' },
+    category: 'plantasDeLuz',
+    image: '/assets/imagenesCampers/plantasDeLuz/plantaLuz.jpg',
+    dimensions: '14m x 2.8m x 3.8m',
     description: { 
-      es: 'Trailer especializado para maquillaje profesional con estaciones individuales y iluminación perfecta.',
-      en: 'Specialized trailer for professional makeup with individual stations and perfect lighting.'
+      es: 'Planta de luz',
+      en: 'Plant of light'
     },
     specifications: {
-      es: ['Estaciones de maquillaje', 'Iluminación profesional', 'Espejos Hollywood', 'Aire acondicionado', 'Organizadores', 'Conexiones eléctricas'],
-      en: ['Makeup stations', 'Professional lighting', 'Hollywood mirrors', 'Air conditioning', 'Organizers', 'Electrical connections']
+      es: [''],
+      en: ['']
     },
-    price: 'Desde $10,000 MXN/día',
+    price: 'Desde $25,000 MXN/día',
     gallery: [
-      'https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/3993434/pexels-photo-3993434.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/3993447/pexels-photo-3993447.jpeg?auto=compress&cs=tinysrgb&w=800'
+      '/assets/imagenesCampers/plantasDeLuz/plantaLuz.jpg',
+      '/assets/imagenesCampers/plantasDeLuz/plantaLuz.jpg',
     ]
   },
 
   // Staff Vehicles
   {
-    id: 'staff-van-luxury',
-    name: { es: 'Van de Staff Luxury', en: 'Luxury Staff Van' },
+    id: 'suv-white-luxury',
+    name: { es: 'SUV de Staff Luxury', en: 'Luxury Staff SUV' },
     category: 'staff',
-    image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/imagenesCampers/camionetas/suv-blanca.jpg',
     dimensions: '6m x 2m x 2.5m',
     description: { 
       es: 'Vehículo cómodo y elegante para el transporte de personal en eventos de alto nivel.',
@@ -234,9 +309,30 @@ export const services: Service[] = [
     },
     price: 'Desde $6,000 MXN/día',
     gallery: [
-      'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1592389/pexels-photo-1592389.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1592388/pexels-photo-1592388.jpeg?auto=compress&cs=tinysrgb&w=800'
+      '/assets/imagenesCampers/camionetas/suv-blanca.jpg',
+      '/assets/imagenesCampers/camionetas/interioresTraseros.jpg',
+      '/assets/imagenesCampers/camionetas/interioresFrente.jpg'
+    ]
+  },
+  {
+    id: 'suv-black-luxury',
+    name: { es: 'SUV de Staff Luxury', en: 'Luxury Staff SUV' },
+    category: 'staff',
+    image: '/assets/imagenesCampers/camionetas/suv-negra.jpg',
+    dimensions: '6m x 2m x 2.5m',
+    description: { 
+      es: 'Vehículo cómodo y elegante para el transporte de personal en eventos de alto nivel.',
+      en: 'Comfortable and elegant vehicle for staff transportation at high-end events.'
+    },
+    specifications: {
+      es: ['Capacidad 12 personas', 'Asientos de cuero', 'Climatización', 'WiFi', 'Cargadores USB', 'Ventanas tintadas'],
+      en: ['12-person capacity', 'Leather seats', 'Climate control', 'WiFi', 'USB chargers', 'Tinted windows']
+    },
+    price: 'Desde $6,000 MXN/día',
+    gallery: [
+      '/assets/imagenesCampers/camionetas/suv-negra.jpg',
+      '/assets/imagenesCampers/camionetas/interioresFrente.jpg',
+      '/assets/imagenesCampers/camionetas/interioresTraseros.jpg',
     ]
   }
 ];

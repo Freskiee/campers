@@ -21,8 +21,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="hover:opacity-80 transition-opacity">
-  <img src="/assets/logo-campers.png" alt="Campers México" className="h-10 md:h-12 w-auto inline-block align-middle" />
-</Link>
+            <img src="/assets/logo-campersmexico.png" alt="Campers México" className="h-10 md:h-12 w-auto inline-block align-middle" />
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">

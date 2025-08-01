@@ -139,8 +139,7 @@ export default function Contact() {
                     <option value="">{t('contact.form.service')}</option>
                     <option value="campers">{t('services.campers')}</option>
                     <option value="bathrooms">{t('services.bathrooms')}</option>
-                    <option value="rest">{t('services.rest')}</option>
-                    <option value="makeup">{t('services.makeup')}</option>
+                    <option value="plantasDeLuz">{t('services.plantasDeLuz')}</option>
                     <option value="staff">{t('services.staff')}</option>
                   </select>
                 </div>

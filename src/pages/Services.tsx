@@ -26,8 +26,7 @@ export default function Services() {
   const categories = [
     { id: 'campers', name: t('services.campers') },
     { id: 'bathrooms', name: t('services.bathrooms') },
-    { id: 'rest', name: t('services.rest') },
-    { id: 'makeup', name: t('services.makeup') },
+    { id: 'plantasDeLuz', name: t('services.plantasDeLuz') },
     { id: 'staff', name: t('services.staff') },
   ];
 

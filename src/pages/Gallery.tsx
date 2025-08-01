@@ -9,6 +9,10 @@ const importedImages = [
   { url: '/assets/imagenesCampers/campers/Descanso-Everest/caja.jpg', category: 'campers', title: 'Descanso Everest' },
   { url: '/assets/imagenesCampers/campers/Descanso-Winderless/caja.jpg', category: 'campers', title: 'Descanso Winderless' },
   { url: '/assets/imagenesCampers/campers/Descanso-BigCountry/caja2.jpg', category: 'campers', title: 'Descanso BigCountry' },
+  { url: '/assets/imagenesCampers/campers/Doble/caja.jpg', category: 'campers', title: 'Doble' },
+  { url: '/assets/imagenesCampers/campers/Maquillaje/espejos2.jpg', category: 'campers', title: 'Maquillaje' },
+  { url: '/assets/imagenesCampers/campers/MotorHome-Safari/caja.jpg', category: 'campers', title: 'MotorHome Safari' },
+  { url: '/assets/imagenesCampers/campers/Triple/caja.jpg', category: 'campers', title: 'Triple' },
   // Camionetas
   { url: '/assets/imagenesCampers/camionetas/suv-blanca.jpg', category: 'camionetas', title: 'SUV blanca' },
   { url: '/assets/imagenesCampers/camionetas/suv-negra.jpg', category: 'camionetas', title: 'SUV negra' },
