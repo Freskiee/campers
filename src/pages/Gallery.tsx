@@ -75,16 +75,22 @@ export default function Gallery() {
       {/* Filters */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div ref={filterBarRef} className="flex gap-4 mb-12 scroll-x-mobile w-full px-6 md:flex-wrap md:justify-center md:overflow-visible md:gap-4 md:w-auto md:px-0">
+          <div
+            ref={filterBarRef}
+            className="scroll-x-mobile flex-nowrap flex gap-2 md:gap-4 mb-12 w-full px-2 md:flex-wrap md:justify-center md:overflow-visible md:w-auto md:px-0"
+            aria-label="Filtros de galería"
+          >
             {filters.map((filter) => (
               <button
                 key={filter.id}
                 ref={el => filterRefs.current[filter.id] = el}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${activeFilter === filter.id
-                    ? 'bg-[#C0965E] text-black'
+                className={`flex-shrink-0 px-5 py-2 md:px-6 md:py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#C0965E] focus:z-10 active:scale-95 hover:scale-105 hover:shadow-md ${
+                  activeFilter === filter.id
+                    ? 'bg-[#C0965E] text-black shadow-lg'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
-                  }`}
+                }`}
+                aria-label={filter.name}
               >
                 {filter.name}
               </button>
@@ -92,12 +98,14 @@ export default function Gallery() {
           </div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
             {filteredImages.map((image, idx) => (
               <div
                 key={image.url + idx}
-                className="relative overflow-hidden rounded-lg cursor-pointer group"
+                className="relative overflow-hidden rounded-lg cursor-pointer group animate-fade-in"
                 onClick={() => setSelectedImage(image)}
+                tabIndex={0}
+                aria-label={image.title}
               >
                 <img
                   src={image.url}

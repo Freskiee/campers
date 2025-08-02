@@ -72,17 +72,22 @@ const [lastTap, setLastTap] = useState<{ time: number; idx: number | null }>({ t
       {/* Categories */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div ref={filterBarRef} className="flex gap-4 mb-12 scroll-x-mobile w-full px-6 md:flex-wrap md:justify-center md:overflow-visible md:gap-4 md:w-auto md:px-0">
+          <div
+            ref={filterBarRef}
+            className="scroll-x-mobile flex-nowrap flex gap-2 md:gap-4 mb-12 w-full px-2 md:flex-wrap md:justify-center md:overflow-visible md:w-auto md:px-0"
+            aria-label="Categorías de servicios"
+          >
             {categories.map((category) => (
               <button
                 key={category.id}
                 ref={el => filterRefs.current[category.id] = el}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                className={`flex-shrink-0 px-5 py-2 md:px-6 md:py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#C0965E] focus:z-10 active:scale-95 hover:scale-105 hover:shadow-md ${
                   activeCategory === category.id
-                    ? 'bg-[#C0965E] text-black'
+                    ? 'bg-[#C0965E] text-black shadow-lg'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
                 }`}
+                aria-label={category.name}
               >
                 {category.name}
               </button>
@@ -90,31 +95,32 @@ const [lastTap, setLastTap] = useState<{ time: number; idx: number | null }>({ t
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
             {filteredServices.map((service, idx) => (
               <div
                 key={service.id}
-                className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col"
+                className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300 ease-in-out cursor-pointer flex flex-col animate-fade-in"
                 onClick={() => setSelectedService(service)}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
                 onTouchStart={e => {
-  setHoveredIdx(idx);
-  const now = Date.now();
-  if (lastTap.idx === idx && now - lastTap.time < 400) {
-    setSelectedService(service);
-    setLastTap({ time: 0, idx: null });
-  } else {
-    setLastTap({ time: now, idx });
-  }
-}}
-onTouchEnd={e => {
-  // Si fue doble tap, hoveredIdx ya se limpia arriba
-  if (!(lastTap.idx === idx && Date.now() - lastTap.time < 400)) {
-    setHoveredIdx(null);
-  }
-}}
-onTouchCancel={() => setHoveredIdx(null)}
+                  setHoveredIdx(idx);
+                  const now = Date.now();
+                  if (lastTap.idx === idx && now - lastTap.time < 400) {
+                    setSelectedService(service);
+                    setLastTap({ time: 0, idx: null });
+                  } else {
+                    setLastTap({ time: now, idx });
+                  }
+                }}
+                onTouchEnd={e => {
+                  if (!(lastTap.idx === idx && Date.now() - lastTap.time < 400)) {
+                    setHoveredIdx(null);
+                  }
+                }}
+                onTouchCancel={() => setHoveredIdx(null)}
+                tabIndex={0}
+                aria-label={service.name[language]}
               >
                 <div className="relative w-full h-40 sm:h-48 group">
   <img
